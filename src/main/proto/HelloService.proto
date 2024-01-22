@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "HelloMessages.proto";
+option java_generic_services = true;
+option java_package = "by.temnaikov.grpc.services";
+
+// The greeting service definition.
+service HelloService {
+  // Sends a greeting
+  rpc sayHello (HelloRequest) returns (HelloReply) {
+  }
+}
