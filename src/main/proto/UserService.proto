@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "CutsomUser.proto";
+option java_generic_services = true;
+option java_package = "by.temnaikov.grpc.services";
+
+service CustomUserService {
+  rpc registerUser (CustomUserInfo) returns (CustomUser) {
+  }
+}

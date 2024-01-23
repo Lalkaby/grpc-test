@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "by.temnaikov.grpc.model";
+
+message CustomUserInfo {
+  reserved 1;
+//  string id = 1;
+  string username = 2;
+  string password = 3;
+  optional string email = 4;
+  repeated string roles = 5;
+}
+
+message CustomUser {
+  reserved 3;
+  string id = 1;
+  string username = 2;
+//  string password = 3;
+  optional string email = 4;
+  repeated string roles = 5;
+}
