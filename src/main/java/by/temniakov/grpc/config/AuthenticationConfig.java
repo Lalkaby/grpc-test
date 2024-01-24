@@ -19,11 +19,6 @@ public class AuthenticationConfig {
     @Autowired
     CustomAuthenticationProvider customAuthenticationProvider;
 
-//    @Bean
-//    BCryptPasswordEncoder bCryptPasswordEncoder(){
-//        return new BCryptPasswordEncoder();
-//    }
-
     @Bean
     AuthenticationManager authenticationManager() {
         final List<AuthenticationProvider> providers = new ArrayList<>();

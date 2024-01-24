@@ -14,18 +14,17 @@ import net.devh.boot.grpc.server.advice.GrpcExceptionHandler;
 public class ExceptionHandler {
 
     @GrpcExceptionHandler(IllegalArgumentException.class)
-    public StatusRuntimeException handleException(IllegalArgumentException error){
+    public StatusRuntimeException handleIllegalArgument(IllegalArgumentException error){
 
         Status status = Status
                 .newBuilder()
                 .setCode(Code.INVALID_ARGUMENT_VALUE)
-                .setMessage("Invalid arguments"+ error.getMessage())
-                .addDetails(Any.pack(HelloReply.newBuilder().setMessage(error.getMessage()).build()))
+                .setMessage(error.getMessage())
                 .build();
 
-        Metadata metadata = new Metadata();
-        metadata.put(Metadata.Key.of("some_key",Metadata.ASCII_STRING_MARSHALLER), "some data");
+//        Metadata metadata = new Metadata();
+//        metadata.put(Metadata.Key.of("some_key",Metadata.ASCII_STRING_MARSHALLER), "some data");
 
-        return StatusProto.toStatusRuntimeException(status, metadata);
+        return StatusProto.toStatusRuntimeException(status);
     }
 }

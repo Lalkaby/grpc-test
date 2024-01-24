@@ -13,6 +13,7 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public class CustomUserMapper {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
     public CustomUserEntity mapFromUserInfo(CustomUserInfo customUserInfo){
         CustomUserEntity user = new CustomUserEntity();
         user.setUsername(customUserInfo.getUsername());
@@ -30,5 +31,16 @@ public class CustomUserMapper {
                         .setEmail(customUser.getEmail())
                         .addAllRoles(Arrays.stream(customUser.getRoles()).toList())
                         .build();
+    }
+
+    public CustomUserEntity mapFromNameAndPass(String username, String password){
+        CustomUserEntity user = new CustomUserEntity();
+        user.setUsername(username);
+        return user;
+    }
+
+    public boolean passwordMatches(CharSequence rawPassword, String hashedPassword){
+
+        return bCryptPasswordEncoder.matches(rawPassword,hashedPassword);
     }
 }

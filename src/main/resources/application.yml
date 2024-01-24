@@ -8,6 +8,10 @@ spring:
   flyway:
     default-schema: grpc
     create-schemas: true
+server:
+  ssl:
+    enabled: true
+    protocol: x
 grpc:
   server:
     security:
